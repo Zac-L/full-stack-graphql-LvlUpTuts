@@ -11,6 +11,7 @@ type Query {
   resolutions: [Resolution]
 }
 `
+// this comment is to get around a wierd update bug
 const typeDefs = [
   testSchema,
   ResolutionsSchema

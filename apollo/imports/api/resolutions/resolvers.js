@@ -1,18 +1,17 @@
 import Resolutions from './resolutions';
 
-// Resolutions.insert({
-//   name: "Test Res"
-// });
-
 
 export default {
   Query: {
-    resolutions() {
-      return Resolutions.find({}).fetch();
+    resolutions(obj, args, { userId }) {
+      console.log(userId);
+      return Resolutions.find({
+        userId
+      }).fetch();
     }
   },
   Mutation:{
-    createResolution(obj, {name}, context) {
+    createResolution(obj, { name }, context) {
       const resolutionId = Resolutions.insert({
         name
       });

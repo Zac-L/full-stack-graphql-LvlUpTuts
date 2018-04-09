@@ -7,30 +7,14 @@ import ResolutionsResolvers from '../../api/resolutions/resolvers';
 import UsersSchema from '../../api/users/User.graphql';
 import UsersResolvers from '../../api/users/resolvers';
 
-const testSchema = `
-type Query {
-  hi: String
-  resolutions: [Resolution]
-  user: User
-}
-`
-// this comment is to get around a wierd update bug
+
+// this comment is to get around a wierd update bug;
 const typeDefs = [
-  testSchema,
   ResolutionsSchema,
   UsersSchema
 ];
 
-const resolver = {
-  Query: {
-    hi() {
-      return 'Hello Level Up'
-    },
-  }
-}
-
 const resolvers = merge(
-  resolver,
   ResolutionsResolvers,
   UsersResolvers
 );

@@ -5,31 +5,18 @@ import { withApollo } from 'react-apollo';
 
 import ResolutionForm from './ResolutionForm';
 import GoalForm from './GoalForm';
-import RegisterForm from './RegisterForm';
-import LoginForm from './LoginForm';
 import Goal from '../ui/resolutions/Goal';
+import UserForm from './UserForm';
 
 const App = ({ loading, resolutions, client, user }) => {
   if(loading) return null;
 
   return (
   <div>
-    { user._id ? (
-   <button onClick={() => {
-     Meteor.logout(); 
-     client.resetStore()
-     }}
-     >
-      Logout
-     </button>
+    <UserForm user={user} client={client} />
 
-    ) : (
-      <div>
-        <RegisterForm client={client} />
-        <LoginForm client={client} />
-      </div>
-    )}
-   <ResolutionForm />
+    { user._id && <ResolutionForm /> }
+    { user._id && (
     <ul>
       {resolutions.map(resolution => (
         <li key={resolution._id}>
@@ -47,6 +34,7 @@ const App = ({ loading, resolutions, client, user }) => {
         </li>
       ))}
     </ul>
+    )}
   </div>
   )
 };

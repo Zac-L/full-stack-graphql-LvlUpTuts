@@ -12,10 +12,11 @@ export default {
   },
 
   Resolution: {
-    goals: resolution =>
-      Goals.find({
+    goals: resolution => {
+      return Goals.find({
         resolutionId: resolution._id
       }).fetch()
+    }
   },
 
   Mutation: {

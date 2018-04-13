@@ -6,17 +6,21 @@ import ResolutionsSchema from '../../api/resolutions/Resolutions.graphql';
 import ResolutionsResolvers from '../../api/resolutions/resolvers';
 import UsersSchema from '../../api/users/User.graphql';
 import UsersResolvers from '../../api/users/resolvers';
+import GoalsSchema from '../../api/goals/Goal.graphql';
+import GoalsResolvers from '../../api/goals/resolvers';
 
 
-// this comment is to get around a wierd update bug;
+// this comment is to get around a wierd update bug
 const typeDefs = [
   ResolutionsSchema,
-  UsersSchema
+  UsersSchema,
+  GoalsSchema
 ];
 
 const resolvers = merge(
   ResolutionsResolvers,
-  UsersResolvers
+  UsersResolvers,
+  GoalsResolvers
 );
 
 const schema = makeExecutableSchema({

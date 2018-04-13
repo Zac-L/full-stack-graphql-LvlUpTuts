@@ -5,6 +5,6 @@ type Goal {
   completed: Boolean
 }
 
-extend type Mutation {
+extend type Mutation{
   createGoal(name: String!, resolutionId: String!): Goal
 }

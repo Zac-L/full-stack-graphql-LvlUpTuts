@@ -54,6 +54,7 @@ query Resolutions {
     goals {
       name
       _id
+      completed
     }
   }
   user {

@@ -3,15 +3,10 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
 
-const createResolution = gql`
-  mutation createResolution($name: String!) {
-    createResolution(name: $name) {
-      _id
-    }
-  }
-`;
-
 class ResolutionForm extends Component {
+  state = {
+    error: null
+  }
 
   submitForm = () => {
     this.props.createResolution({
@@ -19,19 +14,27 @@ class ResolutionForm extends Component {
         name: this.name.value
       }
     })
-    .catch(error => console.log(error));
+    .catch(error => this.setState({ error: error.message}));
   };
-
 
   render() {
     return (
       <div>
+        {this.state.error && <p style={{color: 'red'}}>{this.state.error}</p>}
         <input type="text" ref={input => this.name = input} />
         <button onClick={this.submitForm}>Submit</button>
       </div>
     );
   }
 }
+
+const createResolution = gql`
+  mutation createResolution($name: String!) {
+    createResolution(name: $name) {
+      _id
+    }
+  }
+`;
 
 export default graphql(createResolution, {
   name: 'createResolution',

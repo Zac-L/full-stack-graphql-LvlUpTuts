@@ -7,6 +7,7 @@ import ResolutionForm from './ResolutionForm';
 import GoalForm from './GoalForm';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
+import Goal from '../ui/resolutions/Goal';
 
 const App = ({ loading, resolutions, client, user }) => {
   if(loading) return null;
@@ -32,6 +33,11 @@ const App = ({ loading, resolutions, client, user }) => {
     <ul>
       {resolutions.map(resolution => (
         <li key={resolution._id}>{resolution.name}
+        <ul>
+          {resolution.goals.map(goal => (
+            <Goal goal={goal} key={goal._id} />
+          ))}
+        </ul>
           <GoalForm resolutionId={resolution._id} />
         </li>
       ))}
@@ -45,6 +51,10 @@ query Resolutions {
   resolutions {
     _id
     name
+    goals {
+      name
+      _id
+    }
   }
   user {
     _id

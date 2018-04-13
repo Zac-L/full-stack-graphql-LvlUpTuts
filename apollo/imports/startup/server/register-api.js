@@ -10,7 +10,7 @@ import GoalsSchema from '../../api/goals/Goal.graphql';
 import GoalsResolvers from '../../api/goals/resolvers';
 
 
-// this commen
+// this commensfsdfdsssssssssssss
 const typeDefs = [
   ResolutionsSchema,
   UsersSchema,

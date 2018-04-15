@@ -8,6 +8,7 @@ import GoalForm from './GoalForm';
 import Goal from '../ui/resolutions/Goal';
 import UserForm from './UserForm';
 
+
 const App = ({ loading, resolutions, client, user }) => {
   if(loading) return null;
 
